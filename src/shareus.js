@@ -58,7 +58,7 @@ var shareus = function ShareUs (options={}) {
             return $('<a>').click(
                 function () {
                     self.__exit__(function () {
-                        if (links[i] !== '#') $('<a>').attr('href', links[i]).attr('target', '_blank').click()
+                        if (links[i] !== '#') window.open(links[i], 'NewShareUsLink' + i)
                         self.options.buttonDo()
                     })
                 }
