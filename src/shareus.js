@@ -1,6 +1,6 @@
 // Dependencies: jQuery, jQuery-UI, Bootstrap
 
-var shareus = function ShareUs (options={}) {
+var shareus = function ShareUs (options={}, callback=function () {}) {
     $('.navbar').removeClass('fixed-top')
     self = {} // Object to return instead of this
     self.options = {
@@ -11,10 +11,7 @@ var shareus = function ShareUs (options={}) {
         buttonText: options.buttonText || "I don't care. Just download",
         buttonClass: options.buttonClass || "", // button css classes
         buttonStyle: options.buttonStyle || {}, // button .css() style
-        buttonDo: options.buttonDo || function () {
-            console.log('buttonDo !')
-            $('.navbar').addClass('fixed-top')
-        }, // callback can be used to redirect to download link or whatever
+        buttonLink: options.buttonLink || "#", // link to go to after button clicked
         facebook: options.facebook || "true", // display facebook link
         facebookLink: options.facebookLink || "#", // your facebook sharing link
         twitter: options.twitter || "true", // display twitter link
@@ -53,14 +50,15 @@ var shareus = function ShareUs (options={}) {
         }, self.options.textStyle)).addClass('text-center'),
         button: $('<button>').addClass('btn btn-lg ' + self.options.buttonClass).text(self.options.buttonText).click(function () {
             self.__exit__(self.options.buttonDo)
+            window.open(self.options.buttonLink)
+            callback()
         }),
         icon: function iconIt (i='') {
             return $('<a>').click(
                 function () {
-                    self.__exit__(function () {
-                        if (links[i] !== '#') window.open(links[i], 'NewShareUsLink' + i)
-                        self.options.buttonDo()
-                    })
+                    window.open(links[i])
+                    self.__exit__()
+                    callback()
                 }
             ).css({
                 'cursor': 'pointer'
