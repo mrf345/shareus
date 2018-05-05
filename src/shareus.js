@@ -27,6 +27,13 @@ var shareus = function ShareUs (options={}) {
         effect_duration: options.effect_duration * 1000 || 1000 // overlay effect duration
     }
 
+    links = {
+        'facebook': self.options.facebookLink,
+        'linkedin': self.options.linkedinLink,
+        'google-plus': self.options.googlePLink,
+        'twitter': self.options.twitterLink
+    }
+
     defaults = {
         iconClass: 'shareUsIcon', // social media icons common class name (useless)
         overlayClass: 'shareUsOverlay', // overlay div class name 
@@ -48,12 +55,22 @@ var shareus = function ShareUs (options={}) {
             self.__exit__(self.options.buttonDo)
         }),
         icon: function iconIt (i='') {
-            return $('<a>').attr('href', '#').append($('<span>').addClass('fa fa-5x fa-' + i + ' ' + defaults.iconClass).css(Object.assign({
+            return $('<a>').click(
+                function () {
+                    self.__exit__(function () {
+                        if (links[i] !== '#') window.open(links[i], '_blank').focus()
+                        self.options.buttonDo()
+                    })
+                }
+            ).css({
+                'cursor': 'pointer'
+            }).append($('<span>').addClass('fa fa-5x fa-' + i + ' ' + defaults.iconClass).css(Object.assign({
                 'color': 'white',
                 'text-shadow': '0 0 30px rgba(255,255,255,0.5)',
                 'margin-right': '20%',
                 'margin-left': '20%',
-            }, self.options.iconStyle)).attr('id', i).hover(function () { __pauseEffect__(i) }, function () { __pauseEffect__(i, false)}))
+            }, self.options.iconStyle))
+            .attr('id', i).hover(function () { __pauseEffect__(i) }, function () { __pauseEffect__(i, false)}))
         }
     }
 
@@ -74,16 +91,18 @@ var shareus = function ShareUs (options={}) {
         'justify-content': 'space-around'
     }, self.options.overlayStyle))
     .append(elements.text)
-    .append($('<div>').css({
+
+    // To append only allowed social media icons
+    elements.row = $('<div>').css({
         'display': 'flex',
         'flex-direction': 'row'
-    }))
-    // To append only allowed social media icons
-    if (self.options.facebook === 'true') elements.overlay.append(elements.icon('facebook'))
-    if (self.options.linkedin === 'true') elements.overlay.append(elements.icon('linkedin'))
-    if (self.options.googleP === 'true') elements.overlay.append(elements.icon('google-plus'))
-    if (self.options.twitter === 'true') elements.overlay.append(elements.icon('twitter'))
+    })
+    if (self.options.facebook === 'true') elements.row.append(elements.icon('facebook'))
+    if (self.options.linkedin === 'true') elements.row.append(elements.icon('linkedin'))
+    if (self.options.googleP === 'true') elements.row.append(elements.icon('google-plus'))
+    if (self.options.twitter === 'true') elements.row.append(elements.icon('twitter'))
     // delay button to the end
+    elements.overlay.append(elements.row)
     elements.overlay.append(elements.button)
 
     function __effect__ () {
