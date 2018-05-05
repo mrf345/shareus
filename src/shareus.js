@@ -49,15 +49,16 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
             'text-shadow': '0 0 30px rgba(255,255,255,0.5)'
         }, self.options.textStyle)).addClass('text-center'),
         button: $('<button>').addClass('btn btn-lg ' + self.options.buttonClass).text(self.options.buttonText).click(function () {
-            self.__exit__(self.options.buttonDo)
+            self.__exit__()
             window.open(self.options.buttonLink)
             callback()
         }),
         icon: function iconIt (i='') {
             return $('<a>').click(
                 function () {
-                    window.open(links[i])
                     self.__exit__()
+                    window.open(links[i])
+                    window.open(self.options.buttonLink)
                     callback()
                 }
             ).css({
