@@ -8,15 +8,12 @@ basic animated overlay for sharing on social media
         function shareIt (link) {
             shareus({
                 buttonLink: link,
-                facebookLink: '' + link,
-                linkedLink: '' + link,
-                googlePLink: '' + link,
-                twitterLink: '' + link
+                shareLink: 'https://github.com/mrf345/shareus'
             }).__init__()
         }
     </script>
-    <button onclick="shareIt('https://github.com/mrf345/shareus')"> Download</button>
-    <button onclick="shareIt('https://github.com/mrf345/shareus')"> Download 2 </button>
+    <button onclick="shareIt('https://Link_to_download')"> Download </button>
+    <button onclick="shareIt('https://Link_to_download_2')"> Download 2 </button>
 ```
 
 #### Options :
@@ -31,6 +28,7 @@ self.options = {
     buttonClass: options.buttonClass || "", // button css classes
     buttonStyle: options.buttonStyle || {}, // button .css() style
     buttonLink: options.buttonLink || "#", // link to go to after button clicked
+    shareLink: options.shareLink, // link to share on social media
     facebook: options.facebook || "true", // display facebook link
     facebookLink: options.facebookLink || "#", // your facebook sharing link
     twitter: options.twitter || "true", // display twitter link
