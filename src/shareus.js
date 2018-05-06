@@ -4,7 +4,7 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
     $('.navbar').removeClass('fixed-top')
     self = {} // Object to return instead of this
     self.options = {
-        text: options.text || "Make the world organized again. For free ! Share with others :", // main title text
+        text: options.text || "This is the title, Share with others :", // main title text
         textStyle: options.textStyle || {}, // text .css() style
         overlayColor: options.overlayColor || "rgba(0,0,0,0.85)", // overlay background color
         overlayStyle: options.overlayStyle || {}, // overlay .css() style, don't play with display:
@@ -12,14 +12,15 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
         buttonClass: options.buttonClass || "", // button css classes
         buttonStyle: options.buttonStyle || {}, // button .css() style
         buttonLink: options.buttonLink || "#", // link to go to after button clicked
+        shareLink: options.shareLink, // link to share on social media
         facebook: options.facebook || "true", // display facebook link
-        facebookLink: options.facebookLink || "#", // your facebook sharing link
+        facebookLink: options.facebookLink || 'https://www.facebook.com/sharer.php?u=' + shareLink || '#', // your facebook sharing link
         twitter: options.twitter || "true", // display twitter link
-        twitterLink: options.twitterLink || "#", // your twitter sharing link
+        twitterLink: options.twitterLink || 'https://twitter.com/share?url=' + shareLink || '#', // your twitter sharing link
         googleP: options.googleP || "true", // display google plus
-        googlePLink: options.googlePLink || "#", // your google-plus sharing link
+        googlePLink: options.googlePLink || 'https://plus.google.com/share?url=' + shareLink || '#', // your google-plus sharing link
         linkedin: options.linkedin || "true", // display linkedin link
-        linkedinLink: options.linkedinLink || '#', // you linked sharing link
+        linkedinLink: options.linkedinLink || 'http://www.linkedin.com/shareArticle?mini=true&amp;url=' + shareLink || '#', // you linked sharing link
         iconStyle: options.iconStyle || {}, // social media icon .css() style
         effect_duration: options.effect_duration * 1000 || 1000 // overlay effect duration
     }
