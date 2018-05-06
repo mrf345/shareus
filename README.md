@@ -1,5 +1,10 @@
 # shareus
-basic animated overlay for sharing on social media
+#### basic animated overlay for sharing on social media
+
+#### [Live Demo :](https://audio-sequence.github.io/shareus)
+<p align='center'>
+    <img src='https://audio-sequence.github.io/shareus.gif' />
+</p>
 
 #### Setup :
 
