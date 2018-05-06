@@ -14,13 +14,13 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
         buttonLink: options.buttonLink || "#", // link to go to after button clicked
         shareLink: options.shareLink, // link to share on social media
         facebook: options.facebook || "true", // display facebook link
-        facebookLink: options.facebookLink || 'https://www.facebook.com/sharer.php?u=' + shareLink || '#', // your facebook sharing link
+        facebookLink: options.facebookLink || 'https://www.facebook.com/sharer.php?u=' + options.shareLink || '#', // your facebook sharing link
         twitter: options.twitter || "true", // display twitter link
-        twitterLink: options.twitterLink || 'https://twitter.com/share?url=' + shareLink || '#', // your twitter sharing link
+        twitterLink: options.twitterLink || 'https://twitter.com/share?url=' + options.shareLink || '#', // your twitter sharing link
         googleP: options.googleP || "true", // display google plus
-        googlePLink: options.googlePLink || 'https://plus.google.com/share?url=' + shareLink || '#', // your google-plus sharing link
+        googlePLink: options.googlePLink || 'https://plus.google.com/share?url=' + options.shareLink || '#', // your google-plus sharing link
         linkedin: options.linkedin || "true", // display linkedin link
-        linkedinLink: options.linkedinLink || 'http://www.linkedin.com/shareArticle?mini=true&amp;url=' + shareLink || '#', // you linked sharing link
+        linkedinLink: options.linkedinLink || 'http://www.linkedin.com/shareArticle?mini=true&amp;url=' + options.shareLink || '#', // you linked sharing link
         iconStyle: options.iconStyle || {}, // social media icon .css() style
         effect_duration: options.effect_duration * 1000 || 1000 // overlay effect duration
     }
