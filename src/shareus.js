@@ -107,9 +107,9 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
 
     function __effect__ () {
         Object.keys(defaults.effectLoops).forEach(function (i) {
-            $('#' + i).toggle('fade', {}, __randInt__(4, 2000, 500)).toggle('fade', {}, __randInt__(4, 2000, 500))
+            $('#' + i).animate({'opacity': '0'}, __randInt__(4, 2000, 500)).animate({'opacity': '1'}, __randInt__(4, 2000, 500))
             defaults.effectLoops[i] = setInterval(function () {
-                $('#' + i).toggle('fade', {}, __randInt__(4, 2000, 500)).toggle('fade', {}, __randInt__(4, 2000, 500))
+                $('#' + i).animate({'opacity': '0'}, __randInt__(4, 2000, 500)).animate({'opacity': '1'}, __randInt__(4, 2000, 500))
             }, __randInt__(4, 6000, 3000))
         })
     }
@@ -121,9 +121,9 @@ var shareus = function ShareUs (options={}, callback=function () {}) {
             element.stop(true).animate({'color': 'gray', 'opacity': '1'})
         } else {
             element.animate({'color': 'white'})
-            element.toggle('fade', {}, __randInt__(4, 2000, 500)).toggle('fade', {}, __randInt__(4, 2000, 500))
+            element.animate({'opacity': '0'}, __randInt__(4, 2000, 500)).animate({'opacity': '1'}, __randInt__(4, 2000, 500))
             defaults.effectLoops[id] = setInterval(function () {
-                element.toggle('fade', {}, __randInt__(4, 2000, 500)).toggle('fade', {}, __randInt__(4, 2000, 500))
+                element.animate({'opacity': '0'}, __randInt__(4, 2000, 500)).animate({'opacity': '1'}, __randInt__(4, 2000, 500))
             }, __randInt__(4, 6000, 3000))
         }
     }
